@@ -10,7 +10,7 @@ const config = {
   dateFormat: 'MMMM Do, YYYY',
   siteDescription: 'Sanket Gandhi is a web developer and writer specializing in modern JavaScript.',
   siteRss: '/rss.xml',
-  googleAnalyticsID: '106405877-2',
+  googleAnalyticsID: 'UA-106405877-2',
   postDefaultCategoryID: 'Tech',
   commentsApi: 'https://sanketgandhi-comments-api.herokuapp.com/comments',
   newsletter: 'https://sanketgandhi.substack.com',

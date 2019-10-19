@@ -13,7 +13,7 @@
 Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
 ```
 
-![](window-highligh.png)
+![](content/images/window-highligh.png)
 
 - Tables
 

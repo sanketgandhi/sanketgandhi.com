@@ -40,6 +40,7 @@ If you want to **push a job**(dispatch it) onto the queue, the job implement `Il
 🎩 What if we take the process of sending the email and shove it into job, and then push that job onto the queue?
 
 So second step will be:
+
 ```php
 // Save user's details into the database
 
@@ -48,6 +49,7 @@ this->dispatch(new SendEmail(user));
 
 // Return "Thank You" page
 ```
+
 Instead of returning the "Thank You" response after the email has been sent, **we now return the response after the job has been pushed onto the queue**. This way, user has to wait only as long as it takes for the job to be pushed, as opposed to waiting for an email to be actually sent.
 
 ## Executing jobs
@@ -75,8 +77,6 @@ So the question is, where are these jobs stored? All we've learned so far is tha
 As mentioned earlier - a queue is just a list of jobs that are waiting to be executed. Don't think of queue as anything else by a list of jobs!
 
 Okay, where is this list stored anyway? How do we push the jobs onto the list? We use queue drivers!
-
-(Insert Image Here of queue driver)
 
 ## Queue drivers
 
@@ -112,6 +112,7 @@ public function listen(connection, queue, delay, memory, timeout = 60)
     }
 }
 ```
+
 More specifically, the `process` that is created is actually a Worker process. Even more specifically, the Worker process is actually Symfony’s `Process` object that calls the `queue:work` command once it has been started.
 
 The `while(true)` basically says “run forever”. Thus, the listen command runs as long as you want it to (or until it runs out of memory), running the `runProcess(process)` method over and over.
@@ -136,6 +137,7 @@ Basically, it does two things. It runs the process and it checks if the memory l
 If all this is still somewhat confusing, read on the step-by-step guide.
 
 ### Doing it step-by-step
+
 Lets go through all the listener-worker fuss one more time, step-by-step.
 
 When we run the `queue:listen`, the following things occur:
@@ -168,12 +170,15 @@ public function pop(connectionName, queue = null, delay = 0, sleep = 3, maxTries
     return ['job' => null, 'failed' => false];
 }
 ```
+
 So as you can see, all it does is try to get the next job off of queue. If there is nothing on the queue, it will sleep for whatever time you’ve specified it to (`--sleep` option when running the listener).
 
 There were some comments in the community about this being a cron job, so hopefully all this illustrates a bit better what actually happens in the background.
 
 ### Tips and tricks
+
 #### - Daemon Worker
+
 You might as well try to run `queue:work` with `--daemon` option for forcing the queue worker to continue processing jobs without ever re-booting the framework. This results in a significant reduction of CPU usage when compared to the `queue:listen` command, but at the added complexity of needing to drain the queues of currently executing jobs during your deployments.
 
 Daemon queue workers do not restart the framework before processing each job. Therefore, you should be careful to free any heavy resources before your job finishes. For example, if you are doing image manipulation with the GD library, you should free the memory with `imagedestroy()` when you are done.
@@ -181,6 +186,7 @@ Daemon queue workers do not restart the framework before processing each job. Th
 Similarly, your database connection may disconnect when being used by long-running daemon. You may use the `DB::reconnect` method to ensure you have a fresh connection.
 
 #### - Failed Jobs
+
 Sometimes things don’t go as planned, meaning your queued jobs will fail. It happens to everyone, don’t worry. Laravel includes a simple way to specify the maximum number of times a job should be attempted. After a job has exceeded this amount of attempts, it will be inserted into a `failed_jobs` table.
 
 When running Queue Listener, you may specify the maximum number of times a job should be attempted using the `--tries` option:
@@ -200,9 +206,11 @@ class SendWelcomeEmail extends Job implements SelfHandling, ShouldQueue
 ```
 
 #### - Leverage DispatchesJobs trait
+
 As long as your controllers extend Laravel’s `App\Http\Controllers\Controller` you can dispatch jobs easily using the `this->dispatch(job)` syntax. If you want to dispatch a job from somewhere other than your controllers, you should use `Illuminate\Foundation\Bus\DispatchesJobs` trait.
 
 #### - Multiple Queues and Workers
+
 You can have different queues/lists for storing the jobs. You can name them however you want, such as “images” for pushing image processing tasks, or “emails” for queue that holds jobs specific to sending emails.
 
 You can also have multiple workers, each working on a different queue if you want. You can even have multiple workers per queue, thus having more than one job being worked on simultaneously. Bear in mind having multiple workers comes with a CPU and memory cost.
@@ -210,6 +218,7 @@ You can also have multiple workers, each working on a different queue if you wan
 Look it up in the official docs, it’s pretty straightforward.
 
 ## Conclusion
+
 This was a brief overview of how queues work in Laravel. Most of this also does apply to other PHP frameworks (or even other languages), but the API and approaches are different.
 
 Hopefully this article was helpful to you and you’ve gotten the grasp of what queues are and how they fit into the software development world.

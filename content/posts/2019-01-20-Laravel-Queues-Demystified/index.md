@@ -11,52 +11,71 @@ categories:
 
 ![](demystified.jpg)
 
-Typically backend server receives HTTP request, does some processing and return a response to the user. This is normal flow we are familiar with. This works perfectly fine but there are other use cases too. For example, once user sign up then you want to send an email or you want to send report once user click on something or you want to send push notification once user click on save, etc.
+Typically backend server receives HTTP request, does some processing and return a response to the user. This is normal flow we all are familiar with. This works perfectly fine in small applications. But there are apps that are beyond CRUD that are consider as "Enterprise" application.
+
+There are use-cases where application need to perform certain task in the background like -
+
+1. Sending invoice when user buy something
+2. Generate reports
+3. Sending notifications
+4. Heavy or builk operations that can not be completed within request time frame (typically 30sec/60sec)
+
+##### Queue defination form docs
+
+> Queues allow you to defer the processing of a time consuming task, such as sending an email, until a later time. Deferring these time consuming tasks drastically speeds up web requests to your application.
 
 ## Scenario
 
-Consider if you have website like amazon or social network site and user can sign up for an account. Suppose a user is currently on the sign up page and has submitted the details. So we want following to happen:
+Consider if you have application where user can sign up for an account. So we want following things to happen whenever new user sign up.
 
 ```php
+// ... Some business logic ...
+
 // Save user's details into the database
+
+// ... Some business logic ...
 
 // Send a welcome email to the user
 
 // Return "Thank You" page
 ```
 
-Skipping minor details, let suppose in there is some PHP in the background that takes care of sanitizing the input and storing the user's details into the database.
+Skipping minor details and business logic, lets suppose in there is some PHP in the background that takes care of sanitizing the input and storing the user's details into the database.
 
-After inserting the user details into the database, the script now has to send a welcome email and since PHP executes code line-by-line top-to-bottom, **the user will see the "Thank You" page only after the email has been sent.** Even though sending email sometimes happens very fast (if we are using external service like SendGrid 🚀) else it takes time to send an email. So question is, why make the user wait and show the beautiful loading icon 🚧? (User is going to judge you anyway 😂)
+After inserting the user details into the database, the script now has to send a welcome email and since PHP executes code line-by-line top-to-bottom, **the user will see the "Thank You" page only after the email has been sent.**
+
+Calling third party APIs is time consuming process (though sending email happens very fast with some good vendors like [SendGrid](https://sendgrid.com) 🚀) otherwise it takes time to send an email. So question is, why make the user wait and show the beautiful loading icon ⏳? Even though your system is not slow then also this proceess makes feels slow. So what's the answere 🤔
 
 ## Queues to the rescue!
 
-That's where queue services come into play. A **queue** is just a list/line of **things** waiting to be handled in order, starting from beginning. When I say **things**, I mean **jobs**.
+Imagine queue is bucket and which holds **messages**. All your deffered messages will be in the queue. So queue holds just a messages waiting to be processed.
 
-If you want to **push a job**(dispatch it) onto the queue, the job implement `Illuminate\Contracts\Queue\ShouldQueue` interface. To learn more about jobs and how to create them, [visit official docs](http://laravel.com/docs/queues#writing-job-classes).
+Laravel supports variety of queue's like AWS SQS, Redis, RabbitMQ, Database, etc. All queue configurations stored in [`config/queue.php`](https://github.com/laravel/laravel/blob/master/config/queue.php).
 
-> In laravel, a job that should be queued must implement `Illuminate\Contracts\Queue\ShouldQueue` interface.
+If you want to **push a message** onto the queue then you have to dispatch it from your controller.
 
-🎩 What if we take the process of sending the email and shove it into job, and then push that job onto the queue?
-
-So second step will be:
+So in our above scenario we take the process of sending the email and shove it into job, and then push that job onto the queue.
 
 ```php
 // Save user's details into the database
 
-//push a SendEmail job onto the queue
+//push a SendEmail message onto the queue
 this->dispatch(new SendEmail(user));
 
 // Return "Thank You" page
 ```
 
-Instead of returning the "Thank You" response after the email has been sent, **we now return the response after the job has been pushed onto the queue**. This way, user has to wait only as long as it takes for the job to be pushed, as opposed to waiting for an email to be actually sent.
+Instead of returning the "Thank You" response after the email has been sent, **we now return the response after the message has been pushed onto the queue**. This way, user has to wait only as long as it takes for the message to be pushed, as opposed to waiting for an email to be actually sent.
 
-## Executing jobs
+## Executing messages
 
-So there's queue/list and there are jobs that get pushed onto the queue. But when and how do these jobs get executed? When does the welcome email actually gets sent?
+When and how do these messages get executed? When does the welcome email actually gets send?
 
-In Laravel, there is this intimidating thing called **Queue Listener**. Queue listener is nothing more than a long-running process that listens to and runs the jobs from queue.
+In Laravel, all the workers are stored in **app/Jobs**. Workers are alos called as Jobs in laravel. It is nothing more than a long-running process that listens to queue and runs the messages from queue.
+
+In order to create the job, the class should implement `Illuminate\Contracts\Queue\ShouldQueue` interface. To learn more about jobs and how to create them, [visit official docs](http://laravel.com/docs/queues#writing-job-classes).
+
+> In laravel, a job that should be queued must implement `Illuminate\Contracts\Queue\ShouldQueue` interface.
 
 Technically, a worker command is being created in the background. So long story short - if Queue Listener never existed, none of the jobs from the queue would ever get executed.
 
@@ -66,7 +85,7 @@ We start the Queue Listener by running the following command from the terminal:
 php artisan queue:listen
 ```
 
-> If your server crashed, so will the Queue Listener Stop. You should configure a process monitor that will automatically restart the Queue Listener. [Supervisor](http://supervisord.org/) is a great process monitor for the Linux OS.
+> If your server crashed, so will the Queue Listener Stop. You should configure a process monitor that will automatically restart the Queue Listener. [Supervisor](http://supervisord.org/) is a great process monitor.
 
 If there were already hobs on the queue, it will just go on and do them one-by-one.
 
@@ -74,17 +93,17 @@ If there were already hobs on the queue, it will just go on and do them one-by-o
 
 So the question is, where are these jobs stored? All we've learned so far is that they're pushed onto this queue, but what is it exactly?
 
-As mentioned earlier - a queue is just a list of jobs that are waiting to be executed. Don't think of queue as anything else by a list of jobs!
+As mentioned earlier - a queue is just a list of jobs that are waiting to be executed. Don't think of queue as anything else but a list of jobs!
 
 Okay, where is this list stored anyway? How do we push the jobs onto the list? We use queue drivers!
 
 ## Queue drivers
 
-A queue driver is a concrete implementation of `Illuminate\Contracts\Queue\Queue` interface. It is responsible for managing the jobs, that is - storing and retrieving the jobs from our queue.
+A queue driver is a concrete implementation of `Illuminate\Contracts\Queue\Queue` interface. It is responsible for managing the jobs, that is - storing, retrieving, deleting the jobs from queue.
 
-There are server drivers that ship with Laravel, and you can create one yourself if that's what you want.
+There are several drivers that ship with Laravel, and you can create one yourself if that's what you want.
 
-For example - we cans store jobs in the database. Laravel even provides `database` driver out of the box~ You only have to do two simple steps:
+For example - we cans store jobs in the database. Laravel even provides `database` driver out of the box. You only have to do two simple steps:
 
 - Set environment variable `QUEUE_DRIVER` to `database` (or just shove it in .env file)
 - Run the `php artisan queue:table` and `php artisan migrate` from the terminal
@@ -96,86 +115,6 @@ Believer it or not - literally that's all you have to do! You can run Queue List
 > You might want to create a migration for failed jobs as well. You can do so by running `queue:failed-jobs` artisan command.
 
 You can also create your own queue drivers. Bear in mind your queue implementation has to adhere to `Illuminate\Contracts\Queue\Queue` contract.
-
-## Listener and Worker explained
-
-When you run `queue:listen` artisan command, the
-`Illuminate\Queue\Listener::listen()` method will eventually get triggered:
-
-```php
-public function listen(connection, queue, delay, memory, timeout = 60)
-{
-    process = this->makeProcess(connection, queue, delay, memory, timeout);
-
-    while (true) {
-        this->runProcess(process, memory);
-    }
-}
-```
-
-More specifically, the `process` that is created is actually a Worker process. Even more specifically, the Worker process is actually Symfony’s `Process` object that calls the `queue:work` command once it has been started.
-
-The `while(true)` basically says “run forever”. Thus, the listen command runs as long as you want it to (or until it runs out of memory), running the `runProcess(process)` method over and over.
-
-This is what the `runProcess()` method looks like:
-
-```php
-public function runProcess(Process process, memory)
-{
-    process->run(function (type, line) {
-        this->handleWorkerOutput(type, line);
-    });
-
-    if (this->memoryExceeded(memory)) {
-        this->stop();
-    }
-}
-```
-
-Basically, it does two things. It runs the process and it checks if the memory limit has been exceeded. You can set the memory limit by providing a `--memory` option when starting the listener, but by default it’s 128 megabytes. If the memory has been exceeded, the listener gets stopped so a process manager can re-start it with a clean slate of memory (given you have a configured process manager to do so).
-
-If all this is still somewhat confusing, read on the step-by-step guide.
-
-### Doing it step-by-step
-
-Lets go through all the listener-worker fuss one more time, step-by-step.
-
-When we run the `queue:listen`, the following things occur:
-
-1. `Listener::listen()` method is triggered, which creates a new instance of Symfony’s `Process` (which is a call to `queue:work` artisan command), and stores it in `process` variable.
-2. `runProcess(process)` called in the infinite loop (for the 1st time)
-3. `run()` method is being triggered on the `Process` (which starts the `queue:work` Artisan command at this point)
-4. The `queue:work` command eventually runs the `Worker::pop()` method, that either runs the next job available, or sleeps if there are no jobs
-5. After the job has been finished or, if there wasn’t any job available, worker has finished sleeping, a check is being made on the Listener class whether memory has been exceeded - if the memory has been exceeded, the listener just stops here and there are no more steps
-6. `runProcess(process)` called in the infinite loop (for the 2nd time)
-7. And so on…
-
-As stated in step #4, the worker command essentially runs `Worker::pop()` method, which looks like this:
-
-```php
-public function pop(connectionName, queue = null, delay = 0, sleep = 3, maxTries = 0)
-{
-    connection = this->manager->connection(connectionName);
-
-    job = this->getNextJob(connection, queue);
-
-    if (! is_null(job)) {
-        return this->process(
-            this->manager->getName(connectionName), job, maxTries, delay
-        );
-    }
-
-    this->sleep(sleep);
-
-    return ['job' => null, 'failed' => false];
-}
-```
-
-So as you can see, all it does is try to get the next job off of queue. If there is nothing on the queue, it will sleep for whatever time you’ve specified it to (`--sleep` option when running the listener).
-
-There were some comments in the community about this being a cron job, so hopefully all this illustrates a bit better what actually happens in the background.
-
-### Tips and tricks
 
 #### - Daemon Worker
 

@@ -34,7 +34,7 @@ export default class Index extends Component {
                 <a href="https://www.247software.com" target="blank">
                   24/7 Software
                 </a>
-                . I created this blog to share my learnings and experience.
+                . I share my learnings here and for future reference for me.
               </p>
               <div className="social-buttons">
                 <div>

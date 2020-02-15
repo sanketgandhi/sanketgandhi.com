@@ -59,7 +59,7 @@ export default class Index extends Component {
                 </div>
               </div>
             </div>
-            <div className="newsletter-section">
+            {/* <div className="newsletter-section">
               <form
                 action="https://buttondown.email/api/emails/embed-subscribe/sanketgandhi876"
                 method="post"
@@ -77,7 +77,7 @@ export default class Index extends Component {
                   </a>
                 </p>
               </form>
-            </div>
+            </div> */}
           </div>
         </div>
 

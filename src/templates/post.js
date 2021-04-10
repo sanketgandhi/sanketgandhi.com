@@ -26,7 +26,7 @@ export default function PostTemplate({ data, pageContext }) {
         : 'github-light';
     commentScript.async = true;
     commentScript.src = 'https://utteranc.es/client.js';
-    commentScript.setAttribute('repo', 'https://github.com/sanketgandhi/sanketgandhi.com.git');
+    commentScript.setAttribute('repo', 'sanketgandhi/sanketgandhi.com');
     commentScript.setAttribute('issue-term', 'pathname');
     commentScript.setAttribute('id', 'utterances');
     commentScript.setAttribute('theme', theme);

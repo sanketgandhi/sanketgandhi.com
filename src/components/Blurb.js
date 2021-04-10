@@ -1,6 +1,6 @@
 import React from 'react';
 
-import sanket from '../../static/logos/logo-1024.png';
+import sanket from '../../static/logos/logo-512.png';
 
 export default function Blurb({ title, children }) {
   return (

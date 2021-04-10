@@ -1,7 +1,10 @@
 ---
 title: Sanket Gandhi
-slug: resume
+description: resume
 template: page
+date: "2019-05-04"
+tags:
+  - page
 ---
 
 ### Team Lead

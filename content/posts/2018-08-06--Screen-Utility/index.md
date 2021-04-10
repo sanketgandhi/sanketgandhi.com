@@ -4,8 +4,7 @@ title: Screen Utility
 template: post
 thumbnail: '../../images/term.png'
 slug: screen-utilities
-categories:
-  - Code
+categories: Code
 tags:
   - linux
   - tools

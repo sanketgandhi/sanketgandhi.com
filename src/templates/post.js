@@ -1,100 +1,115 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { Link, graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import Layout from '../layout';
-import UserInfo from '../components/UserInfo';
-import PostTags from '../components/PostTags';
+
+import Layout from '../components/Layout';
+import Suggested from '../components/Suggested';
 import SEO from '../components/SEO';
-import config from '../../data/SiteConfig';
-import { formatDate, editOnGithub } from '../utils/global';
-import NewsletterForm from '../components/NewsletterForm';
+import Comment from '../components/Comment';
+import Blurb from '../components/Blurb';
 
-export default class PostTemplate extends Component {
-  constructor(props) {
-    super(props);
+import config from '../utils/config';
+import { slugify } from '../utils/helpers';
 
-    this.state = {
-      error: false,
-    };
-  }
+export default function PostTemplate({ data, pageContext }) {
+  const post = data.markdownRemark;
+  const { previous, next } = pageContext;
+  const { tags, thumbnail, title, description, date } = post.frontmatter;
+  const commentBox = React.createRef();
 
-  render() {
-    const { comments, error } = this.state;
-    const { slug } = this.props.pageContext;
-    const postNode = this.props.data.markdownRemark;
-    const post = postNode.frontmatter;
-    const popular = postNode.frontmatter.categories.find(category => category === 'Popular');
-    let thumbnail;
-
-    if (!post.id) {
-      post.id = slug;
+  useEffect(() => {
+    const commentScript = document.createElement('script');
+    const theme =
+      typeof window !== 'undefined' && localStorage.getItem('theme') === 'dark'
+        ? 'github-dark'
+        : 'github-light';
+    commentScript.async = true;
+    commentScript.src = 'https://utteranc.es/client.js';
+    commentScript.setAttribute('repo', 'https://github.com/sanketgandhi/sanketgandhi.com.git');
+    commentScript.setAttribute('issue-term', 'pathname');
+    commentScript.setAttribute('id', 'utterances');
+    commentScript.setAttribute('theme', theme);
+    commentScript.setAttribute('crossorigin', 'anonymous');
+    if (commentBox && commentBox.current) {
+      commentBox.current.appendChild(commentScript);
+    } else {
+      console.log(`Error adding utterances comments on: ${commentBox}`);
     }
+  }, []); // eslint-disable-line
 
-    if (!post.category_id) {
-      post.category_id = config.postDefaultCategoryID;
-    }
-
-    if (post.thumbnail) {
-      thumbnail = post.thumbnail.childImageSharp.fixed;
-    }
-
-    const date = formatDate(post.date);
-    const githubLink = editOnGithub(post);
-    const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(post.title)}&url=${
-      config.siteUrl
-    }/${post.slug}/&via=sanketgandhi`;
-
-    return (
-      <Layout>
-        <Helmet>
-          <title>{`${post.title} – ${config.siteTitle}`}</title>
-        </Helmet>
-        <SEO postPath={slug} postNode={postNode} postSEO />
-        <article className="single container">
-          <header className={`single-header ${!thumbnail ? 'no-thumbnail' : ''}`}>
-            {thumbnail && <Img fixed={post.thumbnail.childImageSharp.fixed} />}
-            <div className="flex">
-              <h1>{post.title}</h1>
-              <div className="post-meta">
-                <time className="date">{date}</time>/
-                <a className="twitter-link" href={twitterShare}>
-                  Share
-                </a>
-                /
-                <a
-                  className="github-link"
-                  href={githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Edit ✏️
-                </a>
+  return (
+    <Layout>
+      <Helmet title={`${post.frontmatter.title} | ${config.siteTitle}`} />
+      <SEO postPath={post.fields.slug} postNode={post} postSEO />
+      <div className="container">
+        <article>
+          <header className="article-header">
+            <div className="container">
+              <div className="thumb">
+                <div>
+                  <h1>{title}</h1>
+                  <div className="post-meta">
+                    <div>
+                      By <Link to="/me">Sanket Gandhi</Link> on{' '}
+                      <time>{date}</time>
+                    </div>
+                    {tags && (
+                      <div className="tags">
+                        {tags.map((tag) => (
+                          <Link
+                            key={tag}
+                            to={`/tags/${slugify(tag)}`}
+                            className={`tag-${tag}`}
+                          >
+                            {tag}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                {thumbnail && (
+                  <Img
+                    fixed={thumbnail.childImageSharp.fixed}
+                    className="post-thumbnail"
+                  />
+                )}
               </div>
-              <PostTags tags={post.tags} />
             </div>
+            {description && <p className="description">{description}</p>}
           </header>
-
-          <div className="post" dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div
+            className="article-post"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
         </article>
-        {/* <div className="container">
-          <NewsletterForm />
-        </div> */}
-        {/* <UserInfo config={config} /> */}
-      </Layout>
-    );
-  }
+      </div>
+      <div className="container">
+        <div id="comments">
+          <h2>Comments</h2>
+          <Comment commentBox={commentBox} />
+        </div>
+
+        <Suggested previous={previous} next={next} />
+      </div>
+    </Layout>
+  );
 }
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
-      timeToRead
       excerpt
+      fields {
+        slug
+      }
       frontmatter {
         title
+        date(formatString: "MMMM DD, YYYY")
+        tags
+        description
         thumbnail {
           childImageSharp {
             fixed(width: 150, height: 150) {
@@ -102,15 +117,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        slug
-        date
-        categories
-        tags
-        template
-      }
-      fields {
-        slug
-        date
       }
     }
   }

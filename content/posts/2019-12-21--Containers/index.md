@@ -2,10 +2,8 @@
 date: 2019-12-21
 title: Containers
 template: post
-thumbnail: '../../thumbnails/CheatSheet-icon.png'
-categories:
-  - Containers
-  - Docker
+thumbnail: './CheatSheet-icon.png'
+categories: Containers
 tags:
   - Container
   - Docker

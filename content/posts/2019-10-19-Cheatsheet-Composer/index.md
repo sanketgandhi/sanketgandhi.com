@@ -4,11 +4,7 @@ title: Cheatsheet Composer
 template: post
 thumbnail: '../../thumbnails/CheatSheet-icon.png'
 slug: cs-composer
-categories:
-  - PHP
-  - Composer
-  - New
-  - Cheatsheet
+categories: Composer
 tags:
   - Cheatsheet
   - Composer

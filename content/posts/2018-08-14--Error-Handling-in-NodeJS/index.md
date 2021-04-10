@@ -4,8 +4,7 @@ title: Error Handling in NodeJs
 template: post
 thumbnail: '../../images/nodejs.png'
 slug: error-handling-in-nodejs
-categories:
-  - NodeJS
+categories: NodeJS
 tags:
   - Notes
 ---

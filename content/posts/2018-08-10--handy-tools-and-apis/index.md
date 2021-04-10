@@ -4,8 +4,7 @@ title: Handy Tools and APIs
 template: post
 thumbnail: '../../images/barn-images-12223-unsplash.jpg'
 slug: handy-tools-and-apis
-categories:
-  - Code
+categories: Code
 tags:
   - Notes
   - Tricks

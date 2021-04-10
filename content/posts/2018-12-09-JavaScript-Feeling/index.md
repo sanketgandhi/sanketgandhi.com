@@ -4,8 +4,7 @@ title: JavaScript Feeling
 template: post
 thumbnail: '../../images/jslogo-2.png'
 slug: javascript-feeling
-categories:
-  - JS
+categories: JS
 ---
 
 ![Time-Flies](Time-Flies.jpg)

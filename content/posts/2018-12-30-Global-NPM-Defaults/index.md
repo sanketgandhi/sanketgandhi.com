@@ -4,8 +4,7 @@ title: Global NPM Defaults
 template: post
 thumbnail: '../../thumbnails/npmlogo.png'
 slug: global-npm-modules
-categories:
-  - JS
+categories: JS
 tags:
   - tools
 ---

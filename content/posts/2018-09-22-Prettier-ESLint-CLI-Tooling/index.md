@@ -4,8 +4,7 @@ title: Prettier, ESLint, CLI and Tools
 template: post
 thumbnail: '../../images/Tools.jpg'
 slug: prettier-eslint-cli-tools
-categories:
-  - JS
+categories: JS
 tags:
   - Notes
   - cheatsheet
@@ -47,7 +46,7 @@ It is use to keep all your code well formated and uniformed.
 * This is very useful in continous integration. If you want to failt the build when somebody does not care to format the code then you can make your CI to fail the build and it will be caught by your CI tool (TravisCI or Circle).
 * To fail the build if code is not formatted then use,
   ```js
-  			"format:check": "prettier --list-different \"/**/*.+(js|jsx|css|json|md|yml|yaml|graphql|less|sass|vue)\" "
+  "format:check": "prettier --list-different \"/**/*.+(js|jsx|css|json|md|yml|yaml|graphql|less|sass|vue)\" "
   ```
 * And add `npm run format:check` in your build configuration file
 
@@ -61,23 +60,23 @@ It is use to keep all your code well formated and uniformed.
 
   ```json
   {
-    "extends": [
-      "eslint:recommended", // This is bare minimal eslint configuration that we are extending
-      "prettier", // Above eslint come with some spacing and formatting stuff, but prettier will turn eslint formatting off.
-      "prettier/react"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2018, // Allow to use latest and greatest javascript feature in this project
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
+      "extends": [
+        "eslint:recommended", // This is bare minimal eslint configuration that we are extending
+        "prettier", // Above eslint come with some spacing and formatting stuff, but prettier will turn eslint formatting off.
+        "prettier/react"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 2018, // Allow to use latest and greatest javascript feature in this project
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      },
+      "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
       }
-    },
-    "env": {
-      "es6": true,
-      "browser": true,
-      "node": true
-    }
   }
   ```
 

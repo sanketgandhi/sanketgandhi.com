@@ -1,11 +1,11 @@
 ---
+id: checkcombo-in-sencha-extjs
 date: 2013-12-13
 title: 'Checkcombo in Sencha ExtJS'
 template: post
 thumbnail: '../../thumbnails/sencha-extjs-logo.png'
 slug: checkcombo-in-sencha-extjs
-categories:
-  - ExtJS
+categories: ExtJS
 tags:
   - ExtJS
 ---

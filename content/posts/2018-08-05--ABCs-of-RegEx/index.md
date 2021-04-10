@@ -1,11 +1,12 @@
 ---
+id: abcs-of-regular-expression
 date: 2018-08-05
 title: ABCs of Regular Expression
 template: post
+topic: 'topic'
 thumbnail: '../../images/code.png'
 slug: abcs-of-regex
-categories:
-  - Code
+categories: Code
 tags:
   - regex
 ---

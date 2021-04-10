@@ -1,12 +1,14 @@
 ---
+id: laravel-queues-and-use-cases-part-I
 date: 2019-01-20
 title: Laravel Queues and use cases (Part-I)
 template: post
-thumbnail: '../../thumbnails/laravel-logo.png'
+thumbnail: './../../images/laravel-logo.png'
 slug: laravel-queues-and-ues-cases
-categories:
-  - PHP
-  - Popular
+categories: Popular
+tags:
+  - Laravel
+  - Queues
 ---
 
 ![](demystified.jpg)

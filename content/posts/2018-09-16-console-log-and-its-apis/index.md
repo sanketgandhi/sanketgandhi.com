@@ -4,8 +4,7 @@ title: Console and its various APIs
 template: post
 thumbnail: '../../images/chrome-1.png'
 slug: console-and-its-various-apis
-categories:
-  - JS
+categories: JS
 tags:
   - Notes
   - cheatsheet

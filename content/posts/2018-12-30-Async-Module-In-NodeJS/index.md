@@ -4,8 +4,7 @@ title: Async Module In NodeJS
 template: post
 thumbnail: '../../images/jslogo-2.png'
 slug: async-module-in-nodejs
-categories:
-  - JS
+categories: JS
 tags:
     - NodeJS
 ---

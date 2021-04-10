@@ -11,3 +11,5 @@ Sanket's personal website running on Gatsby, React, and Node.js.
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+This blog is heavily inspired from [taniarascia/taniarascia.com](https://github1s.com/taniarascia/taniarascia.com). Credit goes to all contributors!!!

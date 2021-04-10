@@ -4,11 +4,10 @@ title: Zero Downtime NodeJS App Runner
 template: post
 thumbnail: '../../thumbnails/node.png'
 slug: zero-downtime-nodejs-app-runner
-categories:
-  - NodeJS
+categories: NodeJS
 ---
 
-![](zero-downtime.jpg)
+![test](./zero-downtime.jpg)
 
 ```js
 // This script will boot app.js with the number of workers

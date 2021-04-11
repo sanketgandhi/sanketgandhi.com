@@ -15,7 +15,7 @@ tags:
 
 ![configuration](./configurations.jpg)
 
-Creating this guide for self reference so that every time I don't waste time on this stuff do something productive and it will help others too.
+Creating this guide for self reference so that every time I don't waste time on this stuff and do something productive.
 
 Prerequisite: Before setting up nginx/php, you need `xcode` with CLI tools installed on your machine.
 
@@ -32,7 +32,7 @@ brew tap shivammathur/php
 <!--- Clean up --->
 **Note**: If you have packages from old `homebrew/php` tap, you can remove completly
 <details>
-<summary> Check this commands</summary>
+<summary> Check this commands to cleanup old tap</summary>
 
 ```shell
 # Remove PHP from Homebrew Cellar

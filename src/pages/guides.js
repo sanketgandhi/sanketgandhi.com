@@ -25,7 +25,7 @@ export default function BlogIndex({ data }) {
           <h1>Guides.</h1>
           <p className="subtitle">
             The missing instruction manuals of the web. Long form articles,
-            guides, tutorials, and references about programming and design.
+            guides, and other references.
           </p>
         </div>
       </header>

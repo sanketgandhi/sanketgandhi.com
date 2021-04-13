@@ -1,7 +1,7 @@
 ---
 id: macos-nginx-php-multiple-version-setup
 date: 2021-04-10
-title: macOS NGINX, PHP mutliple version setup
+title: macOS NGINX, PHP multiple version setup
 template: post
 topic: 'topic'
 thumbnail: './../../images/apple.png'

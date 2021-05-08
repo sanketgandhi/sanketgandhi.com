@@ -7,7 +7,7 @@
 
 :root {
     --font-color: #495057;
-    --heading-color: #343a40;
+    --heading-color: #5183f5;
     --background: white;
     --dark-font-color: #1b1d25;
     --medium-font-color: #60656c;
@@ -215,10 +215,12 @@ ol li ol {
 blockquote {
     margin: 2rem 0;
     padding: 1rem;
-    background: var(--blockquote);
+    /* background: var(--blockquote); */
     font-weight: 400;
-    border-radius: 0.3rem;
-    border-left: 3px solid var(--link-color);
+    border-radius: 2.3rem;
+    border-left: 6px solid var(--link-color);
+    border-right: 6px solid var(--link-color);
+    box-shadow: #6ab0f3 0px 0px 40px -12px, rgb(0 0 0 / 30%) 0px 18px 36px -18px;
 }
 
 blockquote p {

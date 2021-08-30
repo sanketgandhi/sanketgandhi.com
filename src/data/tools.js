@@ -94,11 +94,5 @@ export default [
     title: 'DPI / PPI Calculator',
     source: 'https://www.sven.de/dpi/',
     description: 'DPI / PPI Calculator',
-  },
-  {
-    icon: 'ᛣ',
-    title: 'DPI / PPI Calculator',
-    source: 'https://www.sven.de/dpi/',
-    description: 'DPI / PPI Calculator',
   }
 ];

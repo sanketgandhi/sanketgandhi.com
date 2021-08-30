@@ -59,4 +59,46 @@ export default [
     source: 'https://laravelshift.com/can-i-upgrade-laravel',
     description: 'Tool to check dependency version compatible with Laravel',
   },
+  {
+    icon: '🌟',
+    title: 'NodeJS Best Practice',
+    source: 'https://github.com/goldbergyoni/nodebestpractices',
+    description: 'Not tool but guide and centeral hub for reference',
+  },
+  {
+    icon: '⏱',
+    title: 'The official US Time',
+    source: 'https://www.time.gov',
+    description: 'US Time along with your system clock (which might be wrong)',
+  },
+  {
+    icon: '🕵🏻‍♂️',
+    title: 'Password Pusher',
+    source: 'https://pwpush.com',
+    description: 'Shared your password with trusted people with confidence',
+  },
+  {
+    icon: '🚩',
+    title: 'HTTP Status and Meaning',
+    source: 'https://httpstatuses.com',
+    description: 'HTTP Status and meaning',
+  },
+  {
+    icon: '⚙️',
+    title: 'Choose EC2 Instace Carefully!',
+    source: 'https://instances.vantage.sh',
+    description: 'Amazon EC2 comparison',
+  },
+  {
+    icon: 'ᛣ',
+    title: 'DPI / PPI Calculator',
+    source: 'https://www.sven.de/dpi/',
+    description: 'DPI / PPI Calculator',
+  },
+  {
+    icon: 'ᛣ',
+    title: 'DPI / PPI Calculator',
+    source: 'https://www.sven.de/dpi/',
+    description: 'DPI / PPI Calculator',
+  }
 ];

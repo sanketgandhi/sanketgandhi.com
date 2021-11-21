@@ -17,10 +17,10 @@ tags:
 
 ```shell
 # Personal
-ssh-keygen -t rsa -b 4096 -f <github_username>_github_personal -C "<your_personal_email@youremail.com>"
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/<github_username>_github_personal -C "<your_personal_email@youremail.com>"
 
 # Work
-ssh-keygen -t rsa -b 4096 -f <github_username>_github_work -C "<your_work_email@workmail.com>"
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/<github_username>_github_work -C "<your_work_email@workmail.com>"
 ```
 - This will create public and private keys,
   - Personal Keys: `~/.ssh/<github_username>_github_personal.pub` and `~/.ssh/<github_username>_github_personal`

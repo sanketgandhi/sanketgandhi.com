@@ -15,7 +15,7 @@ tags:
 ### Generating SSH Keys
 - Generate SSH keys for the number of accounts with different name and email.
 
-```sh
+```shell
 # Personal
 ssh-keygen -t rsa -b 4096 -f <github_username>_github_personal "<your_personal_email@youremail.com>"
 
@@ -29,8 +29,8 @@ ssh-keygen -t rsa -b 4096 -f <github_username>_github_work "<your_work_email@wor
 ### Add public keys to GitHub
 - Login to [github account](https://github.com/login)
 - Copy your public ssh key (`.pub` extenion) and add it in your gihub account
-    ```sh
-        pbcopy < ~/.ssh/<github_username>_github_personal.pub
+    ```shell
+    pbcopy < ~/.ssh/<github_username>_github_personal.pub
     ```
 - Create [New SSH Key on Github](https://github.com/settings/ssh) and paste copied key
 - Repeat above two steps for all your github accounts
@@ -52,12 +52,12 @@ ssh-add ~/.ssh/<github_username>_github_work
 ### Modify/Create SSH Config file
 - If you don't have `~/.ssh/config` file then you can create and set proper permission
     ```sh
-        touch ~/.ssh/config
-        chmod 644 ~/.ssh/config
+    touch ~/.ssh/config
+    chmod 644 ~/.ssh/config
     ```
 - Add following configuration in config file,
   ```sh
-     Host personal.github.com
+    Host personal.github.com
         HostName github.com
         User git
         PreferredAuthentications publickey
@@ -76,13 +76,13 @@ ssh-add ~/.ssh/<github_username>_github_work
 - You can now use git remote URL by changing git@github.com by git@work.github.com
 - Every time you clone git repo using different git account then you need to use like this,
     ```sh
-        git clone git@work.github.com:<username>/repository-name.git
-        cd repo
-        git config user.email "<email_address>"
+    git clone git@work.github.com:<username>/repository-name.git
+    cd repo
+    git config user.email "<email_address>"
     ```
 - You have to do this for every new repository. For existing repo,
     ```sh
-        git remote set-url origin git@work.github.com:<username>/repository-name.git
+    git remote set-url origin git@work.github.com:<username>/repository-name.git
     ```
 - If you clone repo like this, `git clone git@github.com:<username>/repository-name.git` then it will use your public ssh key id which will use personal email address.
 
@@ -119,8 +119,8 @@ ssh-add ~/.ssh/<github_username>_github_work
 2. Change remote host and email
     - To change remote host add alias in `~/.gitconfig`
         ```sh
-            [alias]
-              changeremotehost = !sh -c \"git remote -v | grep '$1.*fetch' | sed s/..fetch.// | sed s/$1/$2/ | xargs git remote set-url\"
+        [alias]
+            changeremotehost = !sh -c \"git remote -v | grep '$1.*fetch' | sed s/..fetch.// | sed s/$1/$2/ | xargs git remote set-url\"
         ```
 Final alias in `~/.gitconfig` file,
 ```sh

@@ -36,27 +36,27 @@ ssh-keygen -t rsa -b 4096 -f <github_username>_github_work "<your_work_email@wor
 - Repeat above two steps for all your github accounts
 
 ### Add SSH Keys
-```sh
+```shell
 ssh-add ~/.ssh/<github_username>_github_personal
 ssh-add ~/.ssh/<github_username>_github_work
 ```
 - Delete all cached keys that are added by `ssh-add`
-    ```sh
+    ```shell
     ssh-add -D
     ```
 - Check all saved keys
-    ```sh
+    ```shell
     ssh-add -l
     ```
 
 ### Modify/Create SSH Config file
 - If you don't have `~/.ssh/config` file then you can create and set proper permission
-    ```sh
+    ```shell
     touch ~/.ssh/config
     chmod 644 ~/.ssh/config
     ```
 - Add following configuration in config file,
-  ```sh
+  ```shell
     Host personal.github.com
         HostName github.com
         User git
@@ -75,13 +75,13 @@ ssh-add ~/.ssh/<github_username>_github_work
   ```
 - You can now use git remote URL by changing git@github.com by git@work.github.com
 - Every time you clone git repo using different git account then you need to use like this,
-    ```sh
+    ```shell
     git clone git@work.github.com:<username>/repository-name.git
     cd repo
     git config user.email "<email_address>"
     ```
 - You have to do this for every new repository. For existing repo,
-    ```sh
+    ```shell
     git remote set-url origin git@work.github.com:<username>/repository-name.git
     ```
 - If you clone repo like this, `git clone git@github.com:<username>/repository-name.git` then it will use your public ssh key id which will use personal email address.
@@ -89,7 +89,7 @@ ssh-add ~/.ssh/<github_username>_github_work
 ### Setting `user.name` and `user.email` for all projects
 - You will need specific folder for all your work repo and personal/OSS repo. For e.g., `~/personal/` and `~/work/`
 - Modify git config file,
-    ```sh
+    ```shell
         # ...
         # Personal gitconfig
         [includeIf "gitdir:~/personal/"]
@@ -99,7 +99,7 @@ ssh-add ~/.ssh/<github_username>_github_work
             path = ~/.gitconfig-work
     ```
 - Create `~/.gitconfig-personal` and `~/.gitconfig-work` files and add,
-    ```sh
+    ```shell
         [user]
             email = <personal_email>
             name = <Name>
@@ -107,7 +107,7 @@ ssh-add ~/.ssh/<github_username>_github_work
 
 ### Alternate Way For Above Step
 - Set alias in `~/.gitconfig` file,
-    ```sh
+    ```shell
     [alias]
 	setworkmail = "config user.email '<your_work_email@workmail.com>'"
     setpersonalmail = "config user.email '<your_personal_email@youremail.com>'"
@@ -118,12 +118,12 @@ ssh-add ~/.ssh/<github_username>_github_work
 1. Clone repo with normal URL that github provides
 2. Change remote host and email
     - To change remote host add alias in `~/.gitconfig`
-        ```sh
+        ```shell
         [alias]
             changeremotehost = !sh -c \"git remote -v | grep '$1.*fetch' | sed s/..fetch.// | sed s/$1/$2/ | xargs git remote set-url\"
         ```
 Final alias in `~/.gitconfig` file,
-```sh
+```shell
     [alias]
     setworkmail = "config user.email '<your_work_email@workmail.com>'"
     setpersonalmail = "config user.email '<your_personal_email@youremail.com>'"
@@ -133,7 +133,7 @@ Final alias in `~/.gitconfig` file,
 ```
 
 ### Output
-```sh
+```shell
 git clone git@github.com:username/repo.git
 cd repo
 git work

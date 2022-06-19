@@ -11,22 +11,23 @@ tags:
   - docker
   - container
 ---
+Recently, I faced an issue where our code pipeline broke and after debugging the container, it was found that the latest node version was used and our code was not compatible with it! 🤦🏻‍♂️
 
-Recetly, I faced issue where our code pipeline broke and after debugging container it was found that latest node version used and our code was not comaptible with it! 🤦🏻‍♂️
+After doing some research, I discovered a basic mistake we made with versioning and decided to write this blog post to explain it.
 
-After researching about it, I got to know about basic mistake which we did about versioning and I decided to write this blog posts to explain it.
+If you know about tags, then you will get to know what I'm talking about. Have you built a CICD pipeline? Have you ever check docker base image that is used? Have you ever noticed versions? ... and there are a bunch of other questions which I think you should be curious about.
 
-If you know about tags then you will get to know what I'm talking about. Have you built CICD pipeline? have you ever check docker base image that is used? Have you ever notice version? ... and there are bunch of other questions which I thing you should be curious about.
+As all programmers know, whether on the frontend or the backend, we mention versions, and we mention them precisely, because we know it cannot be vague.
 
-As we all programmers follow that either on frontend or backend we mention versions and we mention it preceisely and we know that it can not be vague. Otherwise surprise's are on your way! (if you don't know about sematic versioning and it works then then you should stop reading this and first read about it)
+Otherwise, surprises are on your way! (If you don't know about sematic versioning and how it works then you should stop reading this and first read about it.)
 
-So having set this expectation, we should follow same practice in docker image tags. 
+So, having set this expectation, we should follow the same practise in docker image tags.
 
-When you are developing CICD pipeline or creating container for your application then you most probably choosing base image then you should choose precise version. In many blog posts or videos lot of folks just use `latest` version of image. It is ***_BAD practice and anti-pattern_***.
+When you are developing CICD pipeline or creating container for your application, then you are most probably choosing a base image, then you should choose precise version. In many blog posts or videos, a lot of folks just use latest version of an image. It is BAD practise and anti-pattern.
 
-If you want to use `latest` version then use it but mention precise version.
+If you want to use latest version then use it but mention precise version.
 
-For e.g., check this - 
+For example, check this -
 
 ```
 FROM node:16.13.1
@@ -39,10 +40,10 @@ COPY ./src ./src
 RUN npm run build
 ```
 
-`latest` tag never represent latest image it is misunderstanding. Whenever we publish image for the first time then `latest` tag gets attach to it. 
+It is a misunderstanding that the `latest` tag always represents the most recent image. Whenever we publish an image for the first time, the `latest` tag gets attached to it.
 
-But in subsequent releases if `latest` tag is not change by auther then it will point to same version. 
+But in subsequent releases, if `latest` tag is not changed by the author, then it will point to same version.
 
-If you are using it then it will surely backfire one day. 
+If you are using it, then it will surely backfire one day. 
 
 Cheers! 👋

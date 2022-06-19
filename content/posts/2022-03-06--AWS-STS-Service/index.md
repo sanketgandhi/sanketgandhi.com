@@ -22,3 +22,4 @@ In simple words, you are asking AWS to give you temporary credentials for limite
 
 I will highly recommend to check [how it works](https://aws-blog.de/2021/08/iam-what-happens-when-you-assume-a-role.html) and [how to enable it](https://aws.amazon.com/blogs/security/aws-security-token-service-is-now-available-in-every-aws-region/).
 
+Cheers! 👋

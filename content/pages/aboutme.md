@@ -27,7 +27,7 @@ I believe in the "Learn In Public" method. Worth Reading &mdash;
 
 ### You can find me on,
 
-- **📧 Email**: sanketgandhi876[AT]gmail[DOT]com
+- **📧 Email**: sanket[AT]sanketgandhi[DOT]com
 - **✉️ LinkedIn:"**: [sanketgandhi876](https://linkedin.com/in/sanketgandhi876/)
 - **🛠 GitHub**: [sanketgandhi](https://github.com/sanketgandhi)
 - **🐧 Twitter**: [sanketgandhi876](https://twitter.com/sanketgandhi876)

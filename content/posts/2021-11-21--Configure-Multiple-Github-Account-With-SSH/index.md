@@ -6,7 +6,7 @@ template: post
 topic: 'topic'
 thumbnail: './../../images/github.png'
 slug: configure-multiple-github-accounts-with-ssh
-categories: git
+categories: popular
 tags:
   - git
   - github

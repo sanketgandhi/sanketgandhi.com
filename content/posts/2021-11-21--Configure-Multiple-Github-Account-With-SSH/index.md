@@ -181,7 +181,7 @@ setpersonalmail = "config user.email '<your_personal_email@youremail.com>'"
 
 single command is `git work` or `git personal`!!!
 
-> ```sh
+```sh
 git clone git@github.com:username/repo.git
 cd repo
 git work // <- 🔥

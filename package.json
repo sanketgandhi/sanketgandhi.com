@@ -19,6 +19,7 @@
         "gatsby-plugin-feed": "^3.0.0",
         "gatsby-plugin-google-analytics": "3.2.0",
         "gatsby-plugin-local-search": "^2.0.0",
+        "gatsby-plugin-manifest": "^3.0.0",
         "gatsby-plugin-netlify": "^3.0.1",
         "gatsby-plugin-react-helmet": "^4.0.0",
         "gatsby-plugin-sharp": "^3.0.1",
@@ -35,7 +36,8 @@
         "react-dom": "^17.0.1",
         "react-helmet": "^6.1.0",
         "react-use-flexsearch": "^0.1.1",
-        "gatsby-plugin-manifest": "^3.0.0"
+        "resize-observer-polyfill": "^1.5.1",
+        "use-sound": "^4.0.1"
     },
     "devDependencies": {
         "eslint": "^7.22.0",

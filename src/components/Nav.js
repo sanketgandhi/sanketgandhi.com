@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import useSound from 'use-sound';
+import switchOn from '../../static/sounds/switch-on.mp3';
+import switchOff from '../../static/sounds/switch-off.mp3';
+
 import floppy from '../../static/logos/logo-48.png';
 
 export default function Nav() {
+    const [playOn] = useSound(switchOn, {
+        volume: 1,
+    });
+    const [playOff] = useSound(switchOff, {
+        volume: 1,
+    });
+
   return (
     <nav className="navbar">
       <div className="container">
@@ -27,6 +38,7 @@ export default function Nav() {
                   localStorage.getItem('theme');
 
                 if (theme === 'dark') {
+                  playOn();
                   typeof window !== 'undefined' &&
                     localStorage.removeItem('theme');
                   const link = document.querySelectorAll('#dark-mode');
@@ -36,6 +48,7 @@ export default function Nav() {
                     event.target.textContent = '🌙';
                   }
                 } else {
+                  playOff();
                   typeof window !== 'undefined' &&
                     localStorage.setItem('theme', 'dark');
                   event.target.textContent = '☀️';

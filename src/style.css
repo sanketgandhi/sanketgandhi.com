@@ -5,8 +5,19 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
 
+@font-face {
+	font-family: "Wotfard";
+	src: url("../static/fonts/wotfard-regular-webfont.eot");
+	src: url("../static/fonts/wotfard-regular-webfont.eot?#iefix") format("embedded-opentype"),
+		url("../static/fonts/wotfard-regular-webfont.woff2") format("woff2"),
+		url("../static/fonts/wotfard-regular-webfont.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
 :root {
-    --font-color: #495057;
+    --font-color: #0A0C10;
     --heading-color: #5183f5;
     --background: white;
     --dark-font-color: #1b1d25;
@@ -22,7 +33,7 @@
     --transparent-text: rgba(0, 0, 0, 0.7);
     --transparent-bg: rgba(0, 0, 0, 0.05);
     --light-transparent-bg: rgba(255, 255, 255, 0.1);
-    --font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    --font-family: 'Wotfard', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
         'Roboto', Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
         'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --code-font-family: Menlo, 'Roboto Mono', Courier New, monospace;
@@ -43,8 +54,8 @@ html {
     font-family: var(--font-family);
     color: var(--font-color);
     font-weight: 400;
-    font-size: 0.80rem;
-    line-height: 1.75;
+    font-size: 0.95rem;
+    line-height: 2;
 }
 
 body {

@@ -97,7 +97,7 @@ Lastly, update all packages with latest major version. **This step may break you
 For exammple, to update react to major version
 
 ```bash
-ncu -u -t -f react
+ncu -f dotenv -u
 ```
 
 Run `npm i` to install all updates and make sure everything is working locally. Commit changes so you can revert if required.

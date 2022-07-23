@@ -13,7 +13,7 @@
         "clean": "gatsby clean"
     },
     "dependencies": {
-        "dotenv": "8.6.0",
+        "dotenv": "^8.6.0",
         "gatsby": "^3.14.6",
         "gatsby-image": "^3.0.0",
         "gatsby-plugin-feed": "^3.14.0",
@@ -43,6 +43,10 @@
         "eslint": "^7.32.0",
         "eslint-config-react-app": "^6.0.0",
         "postcss": "^8.4.14"
+    },
+    "engines" : {
+        "npm" : "^6.14.12",
+        "node" : "^14.16.1"
     },
     "repository": {
         "type": "git",

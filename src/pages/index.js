@@ -48,10 +48,10 @@ export default function BlogIndex({ data }) {
         </p> */}
       </Blurb>
       <div className="container index">
-        <Section title="Latest Articles." button>
+        <Section title="Latest Articles" button>
           <Posts data={simplifiedLatest} />
         </Section>
-        <Section title="Popular Articles." button>
+        <Section title="Popular Articles" button>
           <Posts data={simplifiedPopular} />
         </Section>
         <Section title="Useful Tools">

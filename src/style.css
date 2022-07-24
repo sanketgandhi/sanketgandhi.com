@@ -926,34 +926,34 @@ header u {
     padding: 0.4rem 0;
 }
 
-.article-header {
+.post-header {
     padding-top: 1rem;
     margin-bottom: 0.5rem;
 }
 
-.article-header .container {
+.post-header .container {
     padding-left: 0;
     padding-right: 0;
 }
 
-.article-header .thumb {
+.post-header .thumb {
     display: flex;
     flex-direction: column;
     border-bottom: 3px solid var(--border-color);
 }
 
-.article-header .thumb div:first-of-type {
+.post-header .thumb div:first-of-type {
     order: 2;
 }
 
-.article-header h1 {
+.post-header h1 {
     font-weight: 700;
     font-size: 2rem;
     margin: 0;
     line-height: 1.1;
 }
 
-.article-header .description {
+.post-header .description {
     font-size: 1.4rem;
     color: var(--light-font-color);
     font-weight: 300;
@@ -996,20 +996,20 @@ header u {
     border-width: 0;
 }
 
-.article-post .anchor.before {
+.post-post .anchor.before {
     top: 1rem;
 }
 
-.article-post {
+.post-post {
     margin-bottom: 2rem;
 }
 
 @media screen and (min-width: 800px) {
-    .article-header .thumb div:first-of-type {
+    .post-header .thumb div:first-of-type {
         order: 1;
     }
 
-    .article-header .thumb div:nth-of-type(2n) {
+    .post-header .thumb div:nth-of-type(2n) {
         order: 2;
     }
 
@@ -1017,23 +1017,23 @@ header u {
         padding: 2rem 0;
     }
 
-    .article-post {
+    .post-post {
         margin-bottom: 3rem;
     }
 
-    .article-post p {
+    .post-post p {
         max-width: 1000px;
     }
 
-    .article-post h1,
-    .article-post h2,
-    .article-post h3,
-    .article-post h4,
-    .article-post h5 {
+    .post-post h1,
+    .post-post h2,
+    .post-post h3,
+    .post-post h4,
+    .post-post h5 {
         padding-top: 1rem;
     }
 
-    .article-post h2 {
+    .post-post h2 {
         font-size: 2rem;
     }
 
@@ -1051,21 +1051,21 @@ header u {
         background: linear-gradient(transparent 85%, #bac8ff 0);
     }
 
-    .article-header {
+    .post-header {
         padding-top: 3rem;
     }
 
-    .article-header h1 {
+    .post-header h1 {
         padding-top: 0;
         font-size: 2.5rem;
         line-height: 1.1;
     }
 
-    .article-header .thumb {
+    .post-header .thumb {
         flex-direction: row;
     }
 
-    .article-header .description {
+    .post-header .description {
         font-size: 2rem;
         line-height: 1.5;
         max-width: 700px;
@@ -1073,7 +1073,7 @@ header u {
 }
 
 @media screen and (min-width: 1100px) {
-    .article-header h1 {
+    .post-header h1 {
         font-size: 2.5rem;
     }
 }

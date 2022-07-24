@@ -10,8 +10,7 @@ return (
 	<footer className="footer flex">
 		<section className="container">
 			<nav className="footer-links">
-				<Link to="/blog">Articles</Link>
-				<Link to="/guides">Guides</Link>
+				<Link to="/blog">Posts</Link>
 				<Link to="/rss.xml">RSS</Link>
 			</nav>
 			<nav className="flex justify-center">

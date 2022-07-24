@@ -14,24 +14,23 @@ export default function BlogIndex({ data, ...props }) {
   const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts]);
 
   return (
-    <Layout>
-      <Helmet title={`Articles | ${config.siteTitle}`} />
-      <SEO customDescription="Articles, tutorials, snippets, musings, and everything else." />
-      <header>
-        <div className="container">
-          <h1>Articles.</h1>
-          <p className="subtitle">
-            Posts, tutorials, snippets, musings, notes, and everything else. The
-            archive of everything I've written.
-          </p>
-        </div>
-      </header>
-      <section>
-        <div className="container">
-          <Search posts={simplifiedPosts} {...props} />
-        </div>
-      </section>
-    </Layout>
+      <Layout>
+          <Helmet title={`Posts | ${config.siteTitle}`} />
+          <SEO customDescription="Use the search below to filter by title." />
+          <header>
+              <div className="container">
+                  <h1>Posts</h1>
+                  <p className="subtitle">
+                      Use the search below to filter by title
+                  </p>
+              </div>
+          </header>
+          <section>
+              <div className="container">
+                  <Search posts={simplifiedPosts} {...props} />
+              </div>
+          </section>
+      </Layout>
   );
 }
 

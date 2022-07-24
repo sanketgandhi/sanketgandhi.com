@@ -82,7 +82,7 @@ export default function SEO({
       </script>
 
       <meta property="og:url" content={postSEO ? postURL : config.siteUrl} />
-      {postSEO && <meta property="og:type" content="article" />}
+      {postSEO && <meta property="og:type" content="post" />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />

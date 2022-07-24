@@ -44,7 +44,7 @@ export default function PostTemplate({ data, pageContext }) {
       <SEO postPath={post.fields.slug} postNode={post} postSEO />
       <div className="container">
         <article>
-          <header className="article-header">
+          <header className="post-header">
             <div className="container">
               <div className="thumb">
                 <div>
@@ -80,7 +80,7 @@ export default function PostTemplate({ data, pageContext }) {
             {description && <p className="description">{description}</p>}
           </header>
           <div
-            className="article-post"
+            className="post-post"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </article>

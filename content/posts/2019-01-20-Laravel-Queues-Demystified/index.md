@@ -150,6 +150,6 @@ Look it up in the official docs, it’s pretty straightforward.
 
 This was a brief overview of how queues work in Laravel. This concepts are same across other frameworks just you need to understand when to use it and when not to use it.
 
-Hopefully this article was helpful to you and you’ve gotten the grasp of what queues are and how they fit into the software development world.
+Hopefully this post was helpful to you and you’ve gotten the grasp of what queues are and how they fit into the software development world.
 
 Cheers!

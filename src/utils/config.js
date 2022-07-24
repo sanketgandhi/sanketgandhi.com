@@ -1,6 +1,6 @@
 export default {
-  siteTitle: 'Sanket Gandhi',
-  siteUrl: 'https://www.sanketgandhi.com',
-  siteLogo: '/logo.png',
-  description: 'Software developer',
+    siteTitle: 'Sanket Gandhi',
+    siteUrl: 'https://sanketgandhi.com',
+    siteLogo: '/logo.png',
+    description: 'Principal Software Engineer',
 };

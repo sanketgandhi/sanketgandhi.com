@@ -1,7 +1,7 @@
 # Redirects from what the browser requests to what we serve
 # https://www.netlify.com/docs/redirects/
 /cs/                     /tags/cheatsheet/
-/projects/               /blog/
-/portfolio/              /blog/
-/thoughts/               /blog/
+/projects/               /posts/
+/portfolio/              /posts/
+/thoughts/               /posts/
 /search/                 /

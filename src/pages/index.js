@@ -15,91 +15,91 @@ import config from '../utils/config';
 // import speaking from '../data/speaking';
 
 export default function PostIndex({ data }) {
-    const latest = data.latest.edges;
-    const popular = data.popular.edges;
-    const simplifiedLatest = useMemo(() => getSimplifiedPosts(latest), [latest]);
-    const simplifiedPopular = useMemo(() => getSimplifiedPosts(popular), [popular]);
+	const latest = data.latest.edges;
+	const popular = data.popular.edges;
+	const simplifiedLatest = useMemo(() => getSimplifiedPosts(latest), [latest]);
+	const simplifiedPopular = useMemo(() => getSimplifiedPosts(popular), [popular]);
 
-    const Section = ({ title, children, button, ...props }) => (
-        <section {...props}>
-            <h2 className="section-title">
-                {title}
-                {button && (
-                    <Link className="section-button" to="/posts">
-                        View all
-                    </Link>
-                )}
-            </h2>
-            {children}
-        </section>
-    );
+	const Section = ({ title, children, button, ...props }) => (
+		<section {...props}>
+			<h2 className="section-title">
+				{title}
+				{button && (
+					<Link className="section-button" to="/posts">
+						View all
+					</Link>
+				)}
+			</h2>
+			{children}
+		</section>
+	);
 
-    return (
-        <Layout>
-            <Helmet title={config.siteTitle} />
-            <SEO />
-            <Blurb title="👋 Hi, I'm Sanket!">
-                {/* <p>
+	return (
+		<Layout>
+			<Helmet title={config.siteTitle} />
+			<SEO />
+			<Blurb title="👋 Hi, I'm Sanket!">
+				{/* <p>
           Team Lead @24/7 Software.
         </p> */}
-            </Blurb>
-            <div className="container index">
-                <Section title="Latest Posts" button>
-                    <Posts data={simplifiedLatest} />
-                </Section>
-                <Section title="Popular Posts" button>
-                    <Posts data={simplifiedPopular} />
-                </Section>
-                {/* <Section title="Interviews.">
+			</Blurb>
+			<div className="container index">
+				<Section title="Latest Posts" button>
+					<Posts data={simplifiedLatest} />
+				</Section>
+				<Section title="Popular Posts" button>
+					<Posts data={simplifiedPopular} />
+				</Section>
+				{/* <Section title="Interviews.">
           <Guides data={interviews} frontPage />
         </Section>
         <Section title="Speaking.">
           <Guides data={speaking} frontPage />
         </Section> */}
-            </div>
-        </Layout>
-    );
+			</div>
+		</Layout>
+	);
 }
 
 export const pageQuery = graphql`
-    query IndexQuery {
-        latest: allMarkdownRemark(
-            limit: 5
-            sort: { fields: [frontmatter___date], order: DESC }
-            filter: { frontmatter: { template: { eq: "post" } } }
-        ) {
-            edges {
-                node {
-                    id
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        date(formatString: "MMMM DD, YYYY")
-                        title
-                        tags
-                    }
-                }
-            }
-        }
-        popular: allMarkdownRemark(
-            limit: 20
-            sort: { fields: [frontmatter___date], order: DESC }
-            filter: { frontmatter: { categories: { eq: "Popular" } } }
-        ) {
-            edges {
-                node {
-                    id
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        date(formatString: "MMMM DD, YYYY")
-                        title
-                        tags
-                    }
-                }
-            }
-        }
-    }
+	query IndexQuery {
+		latest: allMarkdownRemark(
+			limit: 5
+			sort: { fields: [frontmatter___date], order: DESC }
+			filter: { frontmatter: { template: { eq: "post" } } }
+		) {
+			edges {
+				node {
+					id
+					fields {
+						slug
+					}
+					frontmatter {
+						date(formatString: "MMMM DD, YYYY")
+						title
+						tags
+					}
+				}
+			}
+		}
+		popular: allMarkdownRemark(
+			limit: 20
+			sort: { fields: [frontmatter___date], order: DESC }
+			filter: { frontmatter: { categories: { eq: "Popular" } } }
+		) {
+			edges {
+				node {
+					id
+					fields {
+						slug
+					}
+					frontmatter {
+						date(formatString: "MMMM DD, YYYY")
+						title
+						tags
+					}
+				}
+			}
+		}
+	}
 `;

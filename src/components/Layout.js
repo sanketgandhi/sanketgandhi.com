@@ -10,14 +10,14 @@ import '../style.css';
 import '../new-moon.css';
 
 export default function Layout({ children }) {
-  return (
-    <>
-      <Helmet>
-        <link rel="shortcut icon" type="image/png" href={favicon} />
-      </Helmet>
-      <Nav />
-      <main>{children}</main>
-      <Footer />
-    </>
-  );
+	return (
+		<>
+			<Helmet>
+				<link rel="shortcut icon" type="image/png" href={favicon} />
+			</Helmet>
+			<Nav />
+			<main>{children}</main>
+			<Footer />
+		</>
+	);
 }

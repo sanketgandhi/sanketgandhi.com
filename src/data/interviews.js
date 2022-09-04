@@ -1,9 +1,9 @@
 export default [
-  {
-    id: '',
-    title: '',
-    path: '',
-    description: '',
-    staticThumbnail: '',
-  },
+	{
+		id: '',
+		title: '',
+		path: '',
+		description: '',
+		staticThumbnail: '',
+	},
 ];

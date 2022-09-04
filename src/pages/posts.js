@@ -10,50 +10,48 @@ import { getSimplifiedPosts } from '../utils/helpers';
 import config from '../utils/config';
 
 export default function PostIndex({ data, ...props }) {
-    const posts = data.allMarkdownRemark.edges;
-    const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts]);
+	const posts = data.allMarkdownRemark.edges;
+	const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts]);
 
-    return (
-        <Layout>
-            <Helmet title={`Posts | ${config.siteTitle}`} />
-            <SEO customDescription="Use the search below to filter by title." />
-            <header>
-                <div className="container">
-                    <h1>Posts</h1>
-                    <p className="subtitle">
-                        Use the search below to filter by title
-                    </p>
-                </div>
-            </header>
-            <section>
-                <div className="container">
-                    <Search posts={simplifiedPosts} {...props} />
-                </div>
-            </section>
-        </Layout>
-    );
+	return (
+		<Layout>
+			<Helmet title={`Posts | ${config.siteTitle}`} />
+			<SEO customDescription="Use the search below to filter by title." />
+			<header>
+				<div className="container">
+					<h1>Posts</h1>
+					<p className="subtitle">Use the search below to filter by title</p>
+				</div>
+			</header>
+			<section>
+				<div className="container">
+					<Search posts={simplifiedPosts} {...props} />
+				</div>
+			</section>
+		</Layout>
+	);
 }
 
 export const pageQuery = graphql`
-    query PostQuery {
-        allMarkdownRemark(
-            sort: { fields: [frontmatter___date], order: DESC }
-            filter: { frontmatter: { template: { eq: "post" } } }
-        ) {
-            edges {
-                node {
-                    id
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        date(formatString: "MMMM DD, YYYY")
-                        title
-                        tags
-                        categories
-                    }
-                }
-            }
-        }
-    }
+	query PostQuery {
+		allMarkdownRemark(
+			sort: { fields: [frontmatter___date], order: DESC }
+			filter: { frontmatter: { template: { eq: "post" } } }
+		) {
+			edges {
+				node {
+					id
+					fields {
+						slug
+					}
+					frontmatter {
+						date(formatString: "MMMM DD, YYYY")
+						title
+						tags
+						categories
+					}
+				}
+			}
+		}
+	}
 `;

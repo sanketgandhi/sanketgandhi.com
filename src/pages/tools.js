@@ -9,23 +9,21 @@ import config from '../utils/config';
 import tools from '../data/tools';
 
 export default function AllTools() {
-    return (
-        <Layout>
-            <Helmet title={`Tools | ${config.siteTitle}`} />
-            <SEO />
-            <header>
-                <div className="container">
-                    <h1>Tools</h1>
-                    <p className="subtitle">
-                        Quick links for some useful tools.
-                    </p>
-                </div>
-            </header>
-            <section>
-                <div className="container">
-                    <Tools data={tools} />
-                </div>
-            </section>
-        </Layout>
-    );
+	return (
+		<Layout>
+			<Helmet title={`Tools | ${config.siteTitle}`} />
+			<SEO />
+			<header>
+				<div className="container">
+					<h1>Tools</h1>
+					<p className="subtitle">Quick links for some useful tools.</p>
+				</div>
+			</header>
+			<section>
+				<div className="container">
+					<Tools data={tools} />
+				</div>
+			</section>
+		</Layout>
+	);
 }

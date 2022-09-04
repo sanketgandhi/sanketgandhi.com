@@ -23,9 +23,14 @@ As I learn, I write... as I write, I learn. I believe in the "Learn In Public" m
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Learn In Public. <a href="https://t.co/RpKfRAy9Um">pic.twitter.com/RpKfRAy9Um</a></p>&mdash; swyx (@swyx) <a href="https://twitter.com/swyx/status/1009174159690264579?ref_src=twsrc%5Etfw">June 19, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-### You can find me on,
+### Meme Wall
+Enjoy!
 
-- **📧 Email**: sanket[AT]sanketgandhi[DOT]com
+![](../images/meme-wall.jpeg)
+
+### You can find me on
+
+- **📧 Email**: hi[AT]sanketgandhi[DOT]com
 - **✉️ LinkedIn:"**: [sanketgandhi876](https://linkedin.com/in/sanketgandhi876/)
 - **🛠 GitHub**: [sanketgandhi](https://github.com/sanketgandhi)
 - **🐧 Twitter**: [sanketgandhi876](https://twitter.com/sanketgandhi876)

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Link, graphql } from 'gatsby';
+import { Link, graphql, navigate } from 'gatsby';
 import Helmet from 'react-helmet';
 
 import Layout from '../components/Layout';
@@ -45,8 +45,28 @@ export default function PostIndex({ data }) {
 			</Blurb>
 			<div className="container index">
 				<Section title="Latest Posts" button>
-					<Posts data={simplifiedLatest} />
+					<div className="post-preview">
+						{console.log(simplifiedLatest)}
+						{simplifiedLatest.map((post) => {
+							return (
+								<div
+									className="anchored card"
+									key={post.slug}
+									onClick={() => {
+										navigate(post.slug);
+									}}
+								>
+									<time>{post.date}</time>
+									<Link className="card-header" to={post.slug}>
+										{post.title}
+									</Link>
+									<div className="anchored categories">{}</div>
+								</div>
+							);
+						})}
+					</div>
 				</Section>
+
 				<Section title="Popular Posts" button>
 					<Posts data={simplifiedPopular} />
 				</Section>

@@ -1,175 +1,180 @@
 :root {
-    --font-color: #b3b9c5;
-    --heading-color: #5183f5;
-    --dark-font-color: #ced4da;
-    --background: #1f2022;
-    --medium-font-color: #dee2e6;
-    --light-font-color: #868e96;
-    --light-background: #2d2d31;
-    --light-background-hover: #3b3b3e;
-    --code-background-color: #051727;
-    --border: #404040;
-    --link-color: #6ab0f3;
-    --link-color-darker: #4a72a5;
-    --link-hover-color: #e1a6f2;
-    --navbar-color: #1d1d1d;
-    --blockquote: #2a4661;
-    --transparent-text: rgba(255, 255, 255, 0.7);
-    --transparent-bg: rgba(0, 0, 0, 0.2);
-    --light-transparent-bg: rgba(255, 255, 255, 0.05);
-    --border-color: #3b3b3b;
-}
+	--background: #1f2022;
+	--card-background-color: var(--gray-9);
 
-h1 {
-    color: white;
+	--font-color-heading: var(--gray-1);
+	--font-color-base: var(--gray-2);
+	--font-color-muted: var(--gray-4);
+	--font-color-bright: white;
+
+	--border: #404040;
+	--border-color: #3b3b3b;
+
+	--heading-color: #5183f5;
+	--dark-font-color: #ced4da;
+	--medium-font-color: #dee2e6;
+	--light-font-color: #868e96;
+	--light-background: #2d2d31;
+	--light-background-hover: #3b3b3e;
+	--code-background-color: var(--gray-9);
+	--link-color: #6ab0f3;
+	--link-color-darker: #4a72a5;
+	--link-hover-color: #e1a6f2;
+	--navbar-color: #1d1d1d;
+	--blockquote: #2a4661;
+	--transparent-text: rgba(255, 255, 255, 0.7);
+	--transparent-bg: rgba(0, 0, 0, 0.2);
+	--light-transparent-bg: rgba(255, 255, 255, 0.05);
+	--card-time-color: var(--rainbow-5);
 }
 
 h3,
 h4 {
-    color: var(--medium-font-color);
+	color: var(--medium-font-color);
 }
 
 p.subtitle {
-    color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.5);
 }
 
 a {
-    color: var(--link-color);
-    text-decoration: none;
-    font-weight: 700;
-    border-color: transparent;
+	color: var(--link-color);
+	text-decoration: none;
+	font-weight: 700;
+	border-color: transparent;
 }
 
 a:hover {
-    color: white;
-    border-color: var(--link-color);
+	color: white;
+	border-color: var(--link-color);
 }
 
 a code[class*='language-'] {
-    color: var(--link-color) !important;
+	color: var(--link-color) !important;
 }
 
 a.button {
-    border: 2px solid transparent;
-    color: black;
-    background: var(--link-color);
+	border: 2px solid transparent;
+	color: black;
+	background: var(--link-color);
 }
 
 a.button.secondary {
-    border-color: var(--light-background-hover);
-    background: var(--light-background-hover);
-    color: white;
+	border-color: var(--light-background-hover);
+	background: var(--light-background-hover);
+	color: white;
 }
 
 .navbar a {
-    color: var(--transparent-text);
+	color: var(--transparent-text);
 }
 
 .navbar a:hover,
 .navbar a[aria-current='page'],
 .footer a:hover {
-    color: white;
-    border-color: transparent;
+	color: white;
+	border-color: transparent;
 }
 
 .navbar a.brand {
-    color: white;
+	color: white;
 }
 
 .filename {
-    background: linear-gradient(to bottom, #303030, #202020) !important;
-    box-shadow: 0px 1px 0px rgba(100, 100, 100, 0.5) inset, 0px 1px 0px #515151;
-    border: 1px solid #202020 !important;
-    color: var(--dark-font-color) !important;
-    text-shadow: none !important;
+	background: linear-gradient(to bottom, #303030, #202020) !important;
+	box-shadow: 0px 1px 0px rgba(100, 100, 100, 0.5) inset, 0px 1px 0px #515151;
+	border: 1px solid #202020 !important;
+	color: var(--dark-font-color) !important;
+	text-shadow: none !important;
 }
 
 pre.language-terminal {
-    background: var(--navbar-color);
-    border: 1px solid #111;
+	background: var(--navbar-color);
+	border: 1px solid #111;
 }
 
 pre.language-terminal::before {
-    border-bottom: 1px solid #111;
-    background: linear-gradient(to bottom, #303030, #202020) !important;
-    color: inherit;
+	border-bottom: 1px solid #111;
+	background: linear-gradient(to bottom, #303030, #202020) !important;
+	color: inherit;
 }
 
 pre.language-terminal::after {
-    text-shadow: none;
-    color: var(--light-font-color);
+	text-shadow: none;
+	color: var(--light-font-color);
 }
 
 code.language-terminal {
-    color: var(--dark-font-color);
+	color: var(--dark-font-color);
 }
 
 code {
-    border-width: 1px !important;
-    border-color: rgba(0, 0, 0, 0.1);
+	border-width: 1px !important;
+	border-color: rgba(0, 0, 0, 0.1);
 }
 
 [type='search'] {
-    border: 1px solid var(--light-background);
-    background: var(--light-background);
-    color: var(--dark-font-color);
-    border: 2px solid transparent;
+	border: 1px solid var(--light-background);
+	background: var(--light-background);
+	color: var(--dark-font-color);
+	border: 2px solid transparent;
 }
 
 [type='search']:focus {
-    outline: none;
-    border: 2px solid var(--link-color);
+	outline: none;
+	border: 2px solid var(--link-color);
 }
 
 header u {
-    background: linear-gradient(transparent 85%, #111 0);
+	background: linear-gradient(transparent 85%, #111 0);
 }
 
 table,
 td,
 th {
-    border-color: #111;
+	border-color: #111;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #222;
+	background-color: #222;
 }
 
 blockquote {
-    color: rgba(255, 255, 255, 0.9);
+	color: rgba(255, 255, 255, 0.9);
 }
 
 .new-post {
-    background: #72ce6e;
-    color: black;
+	background: #72ce6e;
+	color: black;
 }
 
 .popular-post {
-    background: #4263eb;
-    color: white;
+	background: #4263eb;
+	color: white;
 }
 
 .guide-thumbnails a:hover {
-    color: white;
+	color: white;
 }
 
 .guide a h2:hover {
-    color: #ffeead;
+	color: #ffeead;
 }
 
 .post a:hover {
-    border-bottom-color: var(--light-background);
+	border-bottom-color: var(--light-background);
 }
 
 /* Inline code */
-:not(pre)>code[class*='language-'] {
-    border: 1px solid rgba(255, 255, 255, 0.05);
+:not(pre) > code[class*='language-'] {
+	border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-pre.language-terminal {
-    box-shadow: none;
-}
-
-.blurb {
-    background: #111;
+.card {
+	border-radius: var(--border-radius);
+	background: var(--card-background-color);
+	box-shadow: #87888a29 0px 10px 36px 0px, #46484f29 0px 0px 0px 1px;
+	padding: 1rem;
+	position: relative;
+	cursor: pointer;
 }

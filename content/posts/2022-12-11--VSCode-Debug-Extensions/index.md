@@ -1,6 +1,6 @@
 ---
 id: vscode-debug-extensions
-date: 2022-12-011
+date: 2022-12-11
 title: VSCode Debug Extensions
 template: post
 topic: 'topic'

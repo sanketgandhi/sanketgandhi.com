@@ -1,7 +1,7 @@
 ---
 id: vscode-debug-extensions
 date: 2022-12-11
-title: VSCode Debug Extensions
+title: Debugging VSCode Extension Settings
 template: post
 topic: 'topic'
 thumbnail: './../../thumbnails/vscode.png'
@@ -11,13 +11,13 @@ tags:
   - vscode
 ---
 
-I wasted 4 hours since I didn't find any article on internet which can give me steps to debug extensions easily and hence this write-up!
+First backstory!
 
-I stumbled on VSCode one day where it was highlighting code block in red and yellow like this -
+I stumbled on VSCode where it was highlighting code block in red and yellow like this -
 ****
 ![showing-vscode-error-block](vscode-error.png)
 
-It was driving me nuts and I wasted 4 hours to check whether this is shown by vscode by default or some extensions.
+It was driving me nuts to solve this. I wasted 4 hours since I didn't find any helpful article or SO which can solve this. I was not so sure who is doing this weird stuff either it could be VSCode or some extension.
 
 When I googled then I found nothing related to this so I decided to disable all my extensions and I successfully got to know that it was some extension who was doing this.
 

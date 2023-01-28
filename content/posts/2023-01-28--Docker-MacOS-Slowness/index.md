@@ -14,6 +14,8 @@ tags:
 
 Now a days everyone is using docker on their machine. Docker work wayyyy better with linux than macOS. Windows (WSL) works great with docker too and we struggle with macOS. It is due to the way docker works inside macOS. Docker runs in virtual machine on macOS that's why this weird slowness problems present in it.
 
+![Meme](meme.jpeg)
+
 I tweak couple of settings today since when docker run then my machine then it does not let me do my work. I had to stop containers in order to resume my work and it is real pain.
 
 Here are some tweaks that may be useful to someone who is in deep pain like my machine was! 😅

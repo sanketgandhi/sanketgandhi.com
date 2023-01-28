@@ -1,6 +1,6 @@
 ---
 id: docker-macos-slowness
-date: 2022-12-11
+date: 2023-01-28
 title: Docker, macOS, and its slowness!!!
 template: post
 topic: 'topic'

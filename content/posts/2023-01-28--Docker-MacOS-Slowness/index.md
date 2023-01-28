@@ -1,7 +1,7 @@
 ---
 id: docker-macos-slowness
 date: 2022-12-11
-title: Docker macOS and it's slowness!!! 
+title: Docker, macOS, and its slowness!!!
 template: post
 topic: 'topic'
 thumbnail: './../../thumbnails/slow.png'
